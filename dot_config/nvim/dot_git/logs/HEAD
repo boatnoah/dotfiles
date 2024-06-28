@@ -1,0 +1,3 @@
+0000000000000000000000000000000000000000 5aeddfdd5d0308506ec63b0e4f8de33e2a39355f boatnoah <noahskim7@gmail.com> 1719434283 -0700	clone: from https://github.com/boatnoah/kickstart.nvim.git
+5aeddfdd5d0308506ec63b0e4f8de33e2a39355f 9d5388567b38da47a22f01e281ffba82eb2ef406 boatnoah <noahskim7@gmail.com> 1719436808 -0700	commit: basic config setup
+9d5388567b38da47a22f01e281ffba82eb2ef406 fcd094c6e9e321153ee5f19c4cb6db7ac2ff9315 boatnoah <noahskim7@gmail.com> 1719454127 -0700	commit: added remaps, splash screen, and oil nvim

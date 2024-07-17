@@ -1,3 +1,4 @@
+#:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
 
 version = 2
 final_space = true
@@ -6,14 +7,16 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
 [[blocks]]
   type = 'prompt'
   alignment = 'left'
-  newline = true
 
   [[blocks.segments]]
     type = 'path'
     style = 'plain'
+    template = '{{ .Path }}'
     background = 'transparent'
     foreground = 'blue'
-    template = '{{ .Path }}'
+    Text = ''
+    Duration = 0
+    NameLength = 0
 
     [blocks.segments.properties]
       style = 'full'
@@ -21,9 +24,12 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
   [[blocks.segments]]
     type = 'git'
     style = 'plain'
-    foreground = 'p:grey'
-    background = 'transparent'
     template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
+    background = 'transparent'
+    foreground = 'p:grey'
+    Text = ''
+    Duration = 0
+    NameLength = 0
 
     [blocks.segments.properties]
       branch_icon = ''
@@ -37,9 +43,12 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
   [[blocks.segments]]
     type = 'executiontime'
     style = 'plain'
-    foreground = 'yellow'
-    background = 'transparent'
     template = '{{ .FormattedMs }}'
+    background = 'transparent'
+    foreground = 'yellow'
+    Text = ''
+    Duration = 0
+    NameLength = 0
 
     [blocks.segments.properties]
       threshold = 5000
@@ -52,22 +61,27 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
   [[blocks.segments]]
     type = 'text'
     style = 'plain'
-    foreground_templates = [
-      "{{if gt .Code 0}}red{{end}}",
-      "{{if eq .Code 0}}magenta{{end}}",
-    ]
-    background = 'transparent'
+    foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}magenta{{end}}']
     template = '❯'
+    background = 'transparent'
+    foreground = ''
+    Text = ''
+    Duration = 0
+    NameLength = 0
 
 [transient_prompt]
-  foreground_templates = [
-    "{{if gt .Code 0}}red{{end}}",
-    "{{if eq .Code 0}}magenta{{end}}",
-  ]
-  background = 'transparent'
+  foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}magenta{{end}}']
   template = '❯ '
+  background = 'transparent'
+  foreground = ''
+  Text = ''
+  Duration = 0
+  NameLength = 0
 
 [secondary_prompt]
-  foreground = 'magenta'
-  background = 'transparent'
   template = '❯❯ '
+  background = 'transparent'
+  foreground = 'magenta'
+  Text = ''
+  Duration = 0
+  NameLength = 0

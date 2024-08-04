@@ -7,6 +7,29 @@ zstyle ':omz:update' frequency 13
 # Plugins
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 
+# Keybindings
+bindkey -e
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey '^[w' kill-region
+
+# History
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+
 # Source Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
 
@@ -14,9 +37,13 @@ source $ZSH/oh-my-zsh.sh
 alias nvconf='nvim ~/.config/nvim/init.lua'
 alias zshrc='nvim ~/.zshrc'
 alias c='clear'
+alias h='~'
+alias oo="nvim ~/obsidian-vault/"
 
 # Oh My Posh initialization
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+fi
 
 # NVM lazy loading
 export NVM_DIR="$HOME/.nvm"
@@ -29,6 +56,9 @@ nvm() {
   lazy_load_nvm
   nvm "$@"
 }
+
+
+eval "$(fzf --zsh)"
 
 # Debugging tools (commented out for daily use)
 # Uncomment these when you need to check performance
